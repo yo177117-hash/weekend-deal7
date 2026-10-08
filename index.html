@@ -1390,10 +1390,7 @@ function updateBonusCoupon() {
     button.classList.remove("is-disabled");
     button.setAttribute("aria-disabled", "false");
 
-    status.textContent =
-      document.documentElement.lang === "ko"
-        ? 
-        : "This bonus coupon link is active through Oct 9 (KST).";
+    status.textContent = "";
 
     return;
   }
@@ -1410,10 +1407,7 @@ function updateBonusCoupon() {
     button.classList.remove("is-disabled");
     button.setAttribute("aria-disabled", "false");
 
-    status.textContent =
-      document.documentElement.lang === "ko"
-        ? 
-        : "The bonus coupon link has switched automatically for Oct 10–11 (KST).";
+    status.textContent = "";
 
     return;
   }
