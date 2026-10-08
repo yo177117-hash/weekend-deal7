@@ -9,710 +9,973 @@
     content="width=device-width, initial-scale=1"
   >
 
-  <title>
-    주말의 게임 - 2026.10.09~10.11
-  </title>
+  <title>주말의 게임 - 2026.10.09~10.11</title>
 
-  <!-- Pretendard 폰트 -->
   <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
   >
 
+  <style>
+    /* =========================================================
+       1. 공통 설정
+       ========================================================= */
+    :root {
+      --bg: #f5f1eb;
+      --card: #ffffff;
+      --text: #171717;
+      --muted: #756e67;
+      --accent: #ff561f;
+      --accent2: #ff7b3e;
+      --bonus: #ffb000;
+      --bonus2: #ff6a00;
+      --black: #151515;
+      --shadow: 0 14px 34px rgba(27, 20, 16, 0.10);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+
+      background:
+        radial-gradient(
+          circle at 50% 0,
+          #ffffff 0,
+          #faf7f3 38%,
+          var(--bg) 100%
+        );
+
+      font-family:
+        Pretendard,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Noto Sans KR",
+        sans-serif;
+    }
+
+
+    /* =========================================================
+       2. 상단
+       ========================================================= */
+    .page {
+      width: min(1060px, calc(100% - 16px));
+      margin: 12px auto 28px;
+    }
+
+    .intro {
+      padding: 12px 10px 14px;
+      text-align: center;
+    }
+
+    .intro-badge {
+      display: inline-flex;
+      padding: 7px 13px;
+
+      border-radius: 999px;
+
+      color: #ffffff;
+      background: #171717;
+
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.13em;
+    }
+
+    .intro h1 {
+      margin: 9px 0 0;
+
+      font-size: clamp(31px, 3.8vw, 47px);
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: -0.055em;
+    }
+
+    .intro p {
+      margin: 7px auto 0;
+
+      color: var(--muted);
+
+      font-size: clamp(13px, 1.4vw, 16px);
+      line-height: 1.4;
+      font-weight: 650;
+    }
+
+
+    /* =========================================================
+       3. 500원 보너스 쿠폰
+       ========================================================= */
+    .bonus-card {
+      position: relative;
+
+      max-width: 760px;
+      margin: 0 auto 15px;
+      padding: 14px 18px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(255, 157, 0, 0.22);
+      border-radius: 20px;
 
-<style>
-/* =========================================================
-   1. 공통 색상 / 기본 설정
-   ========================================================= */
-:root {
-  --bg: #f5f1eb;
-  --card: #ffffff;
-  --text: #171717;
-  --muted: #6f6861;
-  --accent: #ff561f;
-  --accent2: #ff7b3e;
-  --bonus: #ffb000;
-  --bonus2: #ff6a00;
-  --black: #151515;
-  --shadow: 0 15px 38px rgba(27, 20, 16, 0.10);
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  color: var(--text);
-  background: radial-gradient(
-    circle at 50% 0,
-    #ffffff 0,
-    #faf7f3 40%,
-    var(--bg) 100%
-  );
-  font-family:
-    Pretendard,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    "Noto Sans KR",
-    sans-serif;
-}
-
-
-/* =========================================================
-   2. 전체 페이지 / 상단 타이틀
-   ========================================================= */
-.page {
-  width: min(980px, calc(100% - 16px));
-  margin: 12px auto 28px;
-}
-
-.intro {
-  padding: 12px 10px 14px;
-  text-align: center;
-}
-
-.intro-badge {
-  display: inline-flex;
-  padding: 7px 13px;
-  border-radius: 999px;
-  color: #ffffff;
-  background: #171717;
-  font-size: 11px;
-  font-weight: 900;
-  letter-spacing: 0.13em;
-}
-
-.intro h1 {
-  margin: 9px 0 0;
-  font-size: clamp(31px, 3.8vw, 47px);
-  line-height: 1;
-  font-weight: 950;
-  letter-spacing: -0.055em;
-}
-
-.intro p {
-  margin: 7px auto 0;
-  color: var(--muted);
-  font-size: clamp(13px, 1.4vw, 16px);
-  line-height: 1.4;
-  font-weight: 650;
-}
-
-
-/* =========================================================
-   3. 500원 보너스 쿠폰
-   - 모든 게임에 공통으로 적용되는 혜택이라 최상단 배치
-   - 한국 시간 기준으로 버튼 URL 자동 전환
-   ========================================================= */
-.bonus-card {
-  position: relative;
-  max-width: 760px;
-  margin: 0 auto 14px;
-  padding: 15px 18px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 157, 0, 0.22);
-  border-radius: 20px;
-  background:
-    radial-gradient(circle at 90% 10%, rgba(255, 255, 255, 0.45), transparent 26%),
-    linear-gradient(135deg, #fff7dd 0%, #fff0da 100%);
-  box-shadow: 0 12px 30px rgba(100, 65, 15, 0.09);
-}
-
-.bonus-card::after {
-  content: "₩500";
-  position: absolute;
-  right: 18px;
-  top: 4px;
-  color: rgba(255, 111, 0, 0.08);
-  font-size: 76px;
-  line-height: 1;
-  font-weight: 950;
-  letter-spacing: -0.07em;
-  pointer-events: none;
-}
-
-.bonus-top {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  text-align: center;
-}
-
-.bonus-coin {
-  display: inline-grid;
-  place-items: center;
-  flex: 0 0 auto;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  color: #ffffff;
-  background: linear-gradient(135deg, var(--bonus), var(--bonus2));
-  box-shadow: 0 7px 16px rgba(255, 111, 0, 0.22);
-  font-size: 13px;
-  font-weight: 950;
-}
-
-.bonus-copy strong {
-  display: block;
-  font-size: 18px;
-  line-height: 1.2;
-  font-weight: 950;
-  letter-spacing: -0.025em;
-}
-
-.bonus-copy span {
-  display: block;
-  margin-top: 3px;
-  color: #8b6a47;
-  font-size: 10px;
-  line-height: 1.4;
-  font-weight: 750;
-}
-
-.bonus-button {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: min(360px, 100%);
-  min-height: 42px;
-  margin: 11px auto 0;
-  padding: 9px 18px;
-  border-radius: 999px;
-  color: #ffffff;
-  background: linear-gradient(135deg, var(--bonus), var(--bonus2));
-  box-shadow: 0 8px 18px rgba(255, 111, 0, 0.22);
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: 900;
-  transition: 0.2s ease;
-}
-
-.bonus-button:hover {
-  transform: translateY(-2px) scale(1.012);
-  box-shadow: 0 13px 26px rgba(255, 111, 0, 0.30);
-}
-
-.bonus-button.is-disabled {
-  pointer-events: none;
-  background: #b8b1aa;
-  box-shadow: none;
-}
-
-.bonus-status {
-  position: relative;
-  z-index: 2;
-  margin: 6px 0 0;
-  color: #9a7958;
-  text-align: center;
-  font-size: 9px;
-  font-weight: 700;
-}
-
-
-/* =========================================================
-   4. 게임 카드
-   ========================================================= */
-.game-card {
-  padding: 12px;
-  margin-bottom: 13px;
-  overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  border-radius: 24px;
-  background: var(--card);
-  box-shadow: var(--shadow);
-}
-
-
-/* =========================================================
-   5. 이미지 갤러리
-   - PC / 모바일 전체 세로 길이 차이를 줄이기 위해
-     메인 이미지는 비율 고정보다 높이 중심으로 제어
-   ========================================================= */
-.gallery {
-  max-width: 650px;
-  margin: 0 auto;
-}
-
-.main-stage {
-  position: relative;
-  height: 300px;
-  overflow: hidden;
-  border-radius: 17px;
-  background: #151515;
-  box-shadow: 0 9px 21px rgba(0, 0, 0, 0.11);
-}
-
-.main-stage img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition:
-    opacity 0.18s ease,
-    transform 0.28s ease;
-}
-
-.main-stage:hover img {
-  transform: scale(1.016);
-}
-
-.pick-label {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  z-index: 3;
-  padding: 6px 9px;
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  border-radius: 999px;
-  color: #ffffff;
-  background: rgba(18, 18, 18, 0.62);
-  font-size: 9px;
-  font-weight: 900;
-  letter-spacing: 0.1em;
-}
-
-.discount {
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-  z-index: 3;
-  min-width: 108px;
-  padding: 8px 11px;
-  border-radius: 14px;
-  color: #ffffff;
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  box-shadow: 0 9px 20px rgba(255, 79, 31, 0.27);
-  text-align: center;
-}
-
-.discount small {
-  display: block;
-  margin-bottom: 2px;
-  font-size: 8px;
-  font-weight: 900;
-  letter-spacing: 0.07em;
-}
-
-.discount strong {
-  display: block;
-  font-size: 22px;
-  line-height: 1;
-  font-weight: 950;
-}
-
-.thumbs {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 7px;
-  margin-top: 7px;
-}
-
-.thumb {
-  height: 70px;
-  padding: 0;
-  overflow: hidden;
-  border: 2px solid transparent;
-  border-radius: 10px;
-  background: none;
-  cursor: pointer;
-  opacity: 0.68;
-  transition: 0.18s ease;
-}
-
-.thumb img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.thumb:hover,
-.thumb.active {
-  opacity: 1;
-  border-color: var(--accent);
-  transform: translateY(-1px);
-}
-
-
-/* =========================================================
-   6. 게임명 / 설명 / 가격
-   ========================================================= */
-.content {
-  padding: 14px 10px 4px;
-  text-align: center;
-}
-
-.eyebrow {
-  margin: 0 0 4px;
-  color: var(--accent);
-  font-size: 9px;
-  font-weight: 900;
-  letter-spacing: 0.14em;
-}
-
-.title {
-  margin: 0;
-  font-size: clamp(25px, 3.2vw, 36px);
-  line-height: 1.08;
-  font-weight: 950;
-  letter-spacing: -0.045em;
-  word-break: keep-all;
-}
-
-.summary {
-  max-width: 720px;
-  min-height: 22px;
-  margin: 7px auto 0;
-  color: #5f5953;
-  font-size: clamp(13px, 1.3vw, 15px);
-  line-height: 1.4;
-  font-weight: 650;
-  word-break: keep-all;
-}
-
-.divider {
-  width: 38px;
-  height: 2px;
-  margin: 10px auto;
-  border: 0;
-  background: #ddd5ce;
-}
-
-.price-row {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.price-old {
-  color: #9a938d;
-  font-size: 15px;
-  font-weight: 750;
-  text-decoration: line-through;
-  text-decoration-thickness: 2px;
-}
-
-.price-arrow {
-  color: #c5bdb6;
-  font-size: 15px;
-  font-weight: 850;
-  transform: translateY(-2px);
-}
-
-.price-final {
-  color: var(--accent);
-  font-size: clamp(34px, 4vw, 46px);
-  line-height: 0.96;
-  font-weight: 950;
-  letter-spacing: -0.05em;
-}
-
-.price-final .won {
-  margin-left: 3px;
-  font-size: 0.5em;
-  letter-spacing: -0.02em;
-}
-
-.price-note {
-  margin: 5px 0 0;
-  color: #8d857e;
-  font-size: 10px;
-  font-weight: 750;
-}
-
-.period {
-  margin: 6px 0 0;
-  color: #8c857e;
-  font-size: 10px;
-  font-weight: 750;
-}
-
-
-/* =========================================================
-   7. 게임별 버튼
-   ========================================================= */
-.actions {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  margin-top: 10px;
-}
-
-.cta {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: min(340px, 100%);
-  min-height: 42px;
-  padding: 9px 18px;
-  overflow: hidden;
-  border-radius: 999px;
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: 900;
-  transition: 0.2s ease;
-}
-
-.cta:hover {
-  transform: translateY(-2px) scale(1.012);
-}
-
-.coupon {
-  color: #ffffff;
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  box-shadow: 0 8px 18px rgba(255, 79, 31, 0.22);
-}
-
-.coupon::before {
-  content: "";
-  position: absolute;
-  top: -60%;
-  left: -35%;
-  width: 28%;
-  height: 220%;
-  background: rgba(255, 255, 255, 0.22);
-  transform: rotate(18deg);
-  transition: left 0.38s ease;
-}
-
-.coupon:hover {
-  box-shadow: 0 13px 26px rgba(255, 79, 31, 0.32);
-  filter: saturate(1.08) brightness(1.03);
-}
-
-.coupon:hover::before {
-  left: 120%;
-}
-
-.game {
-  color: #ffffff;
-  background: var(--black);
-  box-shadow: 0 7px 16px rgba(0, 0, 0, 0.13);
-}
-
-.game:hover {
-  background: #2b2b2b;
-  box-shadow: 0 13px 24px rgba(0, 0, 0, 0.20);
-}
-
-.arrow {
-  display: inline-block;
-  margin-left: 7px;
-  transition: transform 0.2s ease;
-}
-
-.game:hover .arrow {
-  transform: translateX(5px);
-}
-
-.coupon-icon {
-  display: inline-grid;
-  place-items: center;
-  flex: 0 0 auto;
-  width: 26px;
-  height: 20px;
-  margin-right: 8px;
-  border: 2px solid rgba(255, 255, 255, 0.96);
-  border-radius: 5px;
-  font-size: 11px;
-  line-height: 1;
-  font-weight: 950;
-  transform: rotate(-2deg);
-}
-
-.note {
-  margin: 6px 0 0;
-  color: #aaa29a;
-  font-size: 9px;
-  font-weight: 650;
-}
-
-.next {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin: 0 0 10px;
-  color: #aaa29a;
-  font-size: 8px;
-  font-weight: 850;
-  letter-spacing: 0.13em;
-}
-
-.next::before,
-.next::after {
-  content: "";
-  width: 36px;
-  height: 1px;
-  background: #ded6cf;
-}
-
-
-/* =========================================================
-   8. 모바일
-   ========================================================= */
-@media (max-width: 760px) {
-  .page {
-    width: calc(100% - 8px);
-    margin: 5px auto 16px;
-  }
-
-  .intro {
-    padding: 10px 7px 11px;
-  }
-
-  .intro h1 {
-    font-size: 31px;
-  }
-
-  .intro p {
-    font-size: 12.5px;
-  }
-
-  .bonus-card {
-    margin-bottom: 10px;
-    padding: 12px 10px;
-    border-radius: 17px;
-  }
-
-  .bonus-card::after {
-    right: 8px;
-    font-size: 58px;
-  }
-
-  .bonus-top {
-    gap: 8px;
-  }
-
-  .bonus-coin {
-    width: 34px;
-    height: 34px;
-    font-size: 12px;
-  }
-
-  .bonus-copy strong {
-    font-size: 16px;
-  }
-
-  .bonus-button {
-    width: 100%;
-    min-height: 40px;
-    margin-top: 9px;
-    font-size: 12.5px;
-  }
-
-  .game-card {
-    padding: 7px;
-    margin-bottom: 9px;
-    border-radius: 19px;
-  }
-
-  .gallery {
-    max-width: none;
-  }
-
-  .main-stage {
-    height: 260px;
-    border-radius: 13px;
-  }
-
-  .thumb {
-    height: 62px;
-    border-radius: 8px;
-  }
-
-  .content {
-    padding: 12px 6px 3px;
-  }
-
-  .title {
-    font-size: clamp(23px, 6.2vw, 29px);
-  }
-
-  .summary {
-    min-height: 34px;
-    font-size: 12.5px;
-    line-height: 1.35;
-  }
-
-  .divider {
-    margin: 9px auto;
-  }
-
-  .price-old {
-    font-size: 14px;
-  }
-
-  .price-arrow {
-    font-size: 13px;
-  }
-
-  .price-final {
-    font-size: 38px;
-  }
-
-  .price-note,
-  .period {
-    font-size: 9.5px;
-  }
-
-  .actions {
-    margin-top: 9px;
-    gap: 5px;
-  }
-
-  .cta {
-    width: 100%;
-    min-height: 41px;
-    font-size: 12.5px;
-  }
-
-  .note {
-    font-size: 8.5px;
-  }
-
-  .next {
-    margin-bottom: 8px;
-  }
-}
-
-@media (max-width: 420px) {
-  .main-stage {
-    height: 248px;
-  }
-
-  .thumb {
-    height: 58px;
-  }
-}
-</style>
+      background:
+        radial-gradient(
+          circle at 90% 10%,
+          rgba(255, 255, 255, 0.48),
+          transparent 26%
+        ),
+        linear-gradient(
+          135deg,
+          #fff7dd 0%,
+          #fff0da 100%
+        );
 
+      box-shadow:
+        0 12px 30px rgba(100, 65, 15, 0.09);
+    }
+
+    .bonus-card::after {
+      content: "₩500";
+
+      position: absolute;
+      right: 18px;
+      top: 3px;
+
+      color: rgba(255, 111, 0, 0.08);
+
+      font-size: 72px;
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: -0.07em;
+
+      pointer-events: none;
+    }
+
+    .bonus-top {
+      position: relative;
+      z-index: 2;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .bonus-coin {
+      display: inline-grid;
+      place-items: center;
+
+      flex: 0 0 auto;
+
+      width: 38px;
+      height: 38px;
+
+      border-radius: 50%;
+
+      color: #ffffff;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--bonus),
+          var(--bonus2)
+        );
+
+      font-size: 13px;
+      font-weight: 950;
+    }
+
+    .bonus-copy strong {
+      display: block;
+
+      font-size: 18px;
+      line-height: 1.2;
+      font-weight: 950;
+      letter-spacing: -0.025em;
+    }
+
+    .bonus-copy span {
+      display: block;
+      margin-top: 3px;
+
+      color: #8b6a47;
+
+      font-size: 10px;
+      line-height: 1.4;
+      font-weight: 750;
+    }
+
+    .bonus-button {
+      position: relative;
+      z-index: 2;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: min(360px, 100%);
+      min-height: 42px;
+
+      margin: 10px auto 0;
+      padding: 9px 18px;
+
+      border-radius: 999px;
+
+      color: #ffffff;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--bonus),
+          var(--bonus2)
+        );
+
+      text-decoration: none;
+
+      font-size: 13px;
+      font-weight: 900;
+
+      transition: 0.2s ease;
+    }
+
+    .bonus-button:hover {
+      transform: translateY(-2px) scale(1.012);
+    }
+
+    .bonus-button.is-disabled {
+      pointer-events: none;
+      background: #b8b1aa;
+    }
+
+    .bonus-status {
+      position: relative;
+      z-index: 2;
+
+      margin: 6px 0 0;
+
+      color: #9a7958;
+
+      text-align: center;
+
+      font-size: 9px;
+      font-weight: 700;
+    }
+
+
+    /* =========================================================
+       4. 6개 게임 선택 카드
+       PC: 3 x 2
+       모바일: 2 x 3
+       ========================================================= */
+    .select-section {
+      margin-top: 14px;
+    }
+
+    .select-heading {
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .select-heading strong {
+      display: block;
+
+      font-size: 20px;
+      line-height: 1.2;
+      font-weight: 950;
+      letter-spacing: -0.035em;
+    }
+
+    .select-heading span {
+      display: block;
+      margin-top: 4px;
+
+      color: #8a827b;
+
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .game-select-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+      gap: 10px;
+    }
+
+    .select-card {
+      position: relative;
+
+      display: block;
+
+      padding: 0;
+      overflow: hidden;
+
+      border: 2px solid transparent;
+      border-radius: 16px;
+
+      background: #ffffff;
+
+      box-shadow:
+        0 8px 20px rgba(27, 20, 16, 0.08);
+
+      cursor: pointer;
+      text-align: left;
+
+      transition: 0.18s ease;
+    }
+
+    .select-card:hover {
+      transform: translateY(-3px);
+
+      box-shadow:
+        0 14px 28px rgba(27, 20, 16, 0.13);
+    }
+
+    .select-card.active {
+      border-color: var(--accent);
+
+      box-shadow:
+        0 12px 28px rgba(255, 86, 31, 0.18);
+    }
+
+    .select-image {
+      position: relative;
+
+      height: 145px;
+
+      overflow: hidden;
+
+      background: #181818;
+    }
+
+    .select-image img {
+      display: block;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      transition: transform 0.25s ease;
+    }
+
+    .select-card:hover .select-image img {
+      transform: scale(1.025);
+    }
+
+    .select-number {
+      position: absolute;
+      left: 8px;
+      top: 8px;
+
+      padding: 5px 7px;
+
+      border-radius: 999px;
+
+      color: #ffffff;
+      background: rgba(18, 18, 18, 0.68);
+
+      font-size: 8px;
+      font-weight: 900;
+      letter-spacing: 0.10em;
+    }
+
+    .select-discount {
+      position: absolute;
+      right: 8px;
+      bottom: 8px;
+
+      padding: 6px 8px;
+
+      border-radius: 10px;
+
+      color: #ffffff;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--accent),
+          var(--accent2)
+        );
+
+      font-size: 11px;
+      line-height: 1;
+      font-weight: 950;
+    }
+
+    .select-info {
+      padding: 10px 11px 11px;
+    }
+
+    .select-title {
+      display: block;
+
+      min-height: 34px;
+
+      font-size: 14px;
+      line-height: 1.22;
+      font-weight: 950;
+      letter-spacing: -0.025em;
+
+      word-break: keep-all;
+    }
+
+    .select-price {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+
+      margin-top: 7px;
+    }
+
+    .select-price-old {
+      color: #a69f98;
+
+      font-size: 10px;
+      font-weight: 700;
+
+      text-decoration: line-through;
+    }
+
+    .select-price-final {
+      color: var(--accent);
+
+      font-size: 17px;
+      font-weight: 950;
+      letter-spacing: -0.035em;
+    }
+
+    .select-demo {
+      margin-top: 5px;
+
+      color: #aaa29a;
+
+      font-size: 8px;
+      font-weight: 700;
+    }
+
+
+    /* =========================================================
+       5. 선택 게임 상세
+       ========================================================= */
+    .detail-shell {
+      /*
+        선택 카드 사이에 삽입되므로
+        항상 해당 행 전체 너비를 차지합니다.
+      */
+      grid-column: 1 / -1;
+
+      width: 100%;
+
+      margin: 2px 0 4px;
+      padding: 12px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      border-radius: 24px;
+
+      background: var(--card);
+
+      box-shadow: var(--shadow);
+
+      animation: detailOpen 0.22s ease;
+    }
+
+    @keyframes detailOpen {
+      from {
+        opacity: 0;
+        transform: translateY(-6px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .detail-kicker {
+      margin: 0 0 9px;
+
+      color: #9b938c;
+
+      text-align: center;
+
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+    }
+
+    .gallery {
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .main-stage {
+      position: relative;
+
+      height: 300px;
+
+      overflow: hidden;
+
+      border-radius: 17px;
+
+      background: #151515;
+    }
+
+    .main-stage img {
+      display: block;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      transition:
+        opacity 0.18s ease,
+        transform 0.28s ease;
+    }
+
+    .main-stage:hover img {
+      transform: scale(1.016);
+    }
+
+    .pick-label {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+
+      z-index: 3;
+
+      padding: 6px 9px;
+
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 999px;
+
+      color: #ffffff;
+      background: rgba(18, 18, 18, 0.62);
+
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+    }
+
+    .discount {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+
+      z-index: 3;
+
+      min-width: 108px;
+
+      padding: 8px 11px;
+
+      border-radius: 14px;
+
+      color: #ffffff;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--accent),
+          var(--accent2)
+        );
+
+      text-align: center;
+    }
+
+    .discount small {
+      display: block;
+
+      margin-bottom: 2px;
+
+      font-size: 8px;
+      font-weight: 900;
+      letter-spacing: 0.07em;
+    }
+
+    .discount strong {
+      display: block;
+
+      font-size: 22px;
+      line-height: 1;
+      font-weight: 950;
+    }
+
+    .thumbs {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 7px;
+
+      margin-top: 7px;
+    }
+
+    .thumb {
+      height: 70px;
+
+      padding: 0;
+      overflow: hidden;
+
+      border: 2px solid transparent;
+      border-radius: 10px;
+
+      background: none;
+
+      cursor: pointer;
+      opacity: 0.68;
+
+      transition: 0.18s ease;
+    }
+
+    .thumb img {
+      display: block;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+    }
+
+    .thumb:hover,
+    .thumb.active {
+      opacity: 1;
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .detail-content {
+      padding: 14px 10px 4px;
+      text-align: center;
+    }
+
+    .detail-eyebrow {
+      margin: 0 0 4px;
+
+      color: var(--accent);
+
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+    }
+
+    .detail-title {
+      margin: 0;
+
+      font-size: clamp(25px, 3.2vw, 36px);
+      line-height: 1.08;
+      font-weight: 950;
+      letter-spacing: -0.045em;
+
+      word-break: keep-all;
+    }
+
+    .detail-summary {
+      max-width: 720px;
+
+      margin: 7px auto 0;
+
+      color: #5f5953;
+
+      font-size: clamp(13px, 1.3vw, 15px);
+      line-height: 1.4;
+      font-weight: 650;
+
+      word-break: keep-all;
+    }
+
+    .divider {
+      width: 38px;
+      height: 2px;
+
+      margin: 10px auto;
+
+      border: 0;
+
+      background: #ddd5ce;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 10px;
+
+      flex-wrap: wrap;
+    }
+
+    .price-old {
+      color: #9a938d;
+
+      font-size: 15px;
+      font-weight: 750;
+
+      text-decoration: line-through;
+      text-decoration-thickness: 2px;
+    }
+
+    .price-arrow {
+      color: #c5bdb6;
+
+      font-size: 15px;
+      font-weight: 850;
+
+      transform: translateY(-2px);
+    }
+
+    .price-final {
+      color: var(--accent);
+
+      font-size: clamp(34px, 4vw, 46px);
+      line-height: 0.96;
+      font-weight: 950;
+      letter-spacing: -0.05em;
+    }
+
+    .price-note {
+      margin: 5px 0 0;
+
+      color: #8d857e;
+
+      font-size: 10px;
+      font-weight: 750;
+    }
+
+    .period {
+      margin: 6px 0 0;
+
+      color: #8c857e;
+
+      font-size: 10px;
+      font-weight: 750;
+    }
+
+    .actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+
+      margin-top: 10px;
+    }
+
+    .cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: min(340px, 100%);
+      min-height: 42px;
+
+      padding: 9px 18px;
+
+      border-radius: 999px;
+
+      text-decoration: none;
+
+      font-size: 13px;
+      font-weight: 900;
+
+      transition: 0.2s ease;
+    }
+
+    .cta:hover {
+      transform: translateY(-2px) scale(1.012);
+    }
+
+    .coupon {
+      color: #ffffff;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--accent),
+          var(--accent2)
+        );
+    }
+
+    .game-link {
+      color: #ffffff;
+      background: var(--black);
+    }
+
+    .coupon-icon {
+      display: inline-grid;
+      place-items: center;
+
+      width: 26px;
+      height: 20px;
+
+      margin-right: 8px;
+
+      border: 2px solid rgba(255, 255, 255, 0.96);
+      border-radius: 5px;
+
+      font-size: 11px;
+      line-height: 1;
+      font-weight: 950;
+
+      transform: rotate(-2deg);
+    }
+
+    .arrow {
+      margin-left: 7px;
+    }
+
+    .note {
+      margin: 6px 0 0;
+
+      color: #aaa29a;
+
+      font-size: 9px;
+      font-weight: 650;
+    }
+
+
+    /* =========================================================
+       6. 모바일
+       ========================================================= */
+    @media (max-width: 760px) {
+      .page {
+        width: calc(100% - 8px);
+        margin: 5px auto 16px;
+      }
+
+      .intro {
+        padding: 10px 7px 11px;
+      }
+
+      .intro h1 {
+        font-size: 31px;
+      }
+
+      .intro p {
+        font-size: 12.5px;
+      }
+
+      .bonus-card {
+        margin-bottom: 10px;
+        padding: 12px 10px;
+
+        border-radius: 17px;
+      }
+
+      .bonus-copy strong {
+        font-size: 16px;
+      }
+
+      .bonus-button {
+        width: 100%;
+        min-height: 40px;
+
+        margin-top: 9px;
+
+        font-size: 12.5px;
+      }
+
+      /* 핵심: 모바일은 2열 x 3행 */
+      .game-select-grid {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+
+        gap: 7px;
+      }
+
+      .select-image {
+        height: 115px;
+      }
+
+      .select-info {
+        padding: 8px 9px 9px;
+      }
+
+      .select-title {
+        min-height: 31px;
+        font-size: 12.5px;
+      }
+
+      .select-price-final {
+        font-size: 15px;
+      }
+
+      .detail-shell {
+        margin: 1px 0 3px;
+        padding: 7px;
+
+        border-radius: 19px;
+      }
+
+      .main-stage {
+        height: 260px;
+        border-radius: 13px;
+      }
+
+      .thumb {
+        height: 62px;
+        border-radius: 8px;
+      }
+
+      .detail-content {
+        padding: 12px 6px 3px;
+      }
+
+      .detail-title {
+        font-size: clamp(23px, 6.2vw, 29px);
+      }
+
+      .detail-summary {
+        font-size: 12.5px;
+        line-height: 1.35;
+      }
+
+      .price-final {
+        font-size: 38px;
+      }
+
+      .cta {
+        width: 100%;
+        min-height: 41px;
+
+        font-size: 12.5px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .select-image {
+        height: 102px;
+      }
+
+      .main-stage {
+        height: 248px;
+      }
+
+      .thumb {
+        height: 58px;
+      }
+    }
+  </style>
 </head>
 
 
 <body>
 
-  <!-- =====================================================
-       페이지 전체 영역
-       ===================================================== -->
   <main class="page">
 
-    <!-- 상단 타이틀 -->
+    <!-- =====================================================
+         상단
+         ===================================================== -->
     <header class="intro">
 
       <div class="intro-badge">
@@ -724,17 +987,16 @@ body {
       </h1>
 
       <p>
-        이번 주말, 딱 세 작품만 특별가로.<br>놓치기 아까운 게임을 한 번에 만나보세요.
+        6개 게임을 한눈에 보고,<br>
+        원하는 게임을 선택해서 상세 혜택을 확인해보세요.
       </p>
 
     </header>
-    <!-- /상단 타이틀 -->
 
 
-    <!-- ===================================================
+    <!-- =====================================================
          500원 보너스 쿠폰
-         모든 게임 공통 혜택이므로 게임 리스트 최상단 배치
-         =================================================== -->
+         ===================================================== -->
     <section class="bonus-card">
 
       <div class="bonus-top">
@@ -744,6 +1006,7 @@ body {
         </div>
 
         <div class="bonus-copy">
+
           <strong>
             매일 받을 수 있는 500원 보너스 쿠폰
           </strong>
@@ -751,14 +1014,11 @@ body {
           <span>
             게임별 15% 할인 쿠폰과 함께 추가 혜택을 챙겨보세요.
           </span>
+
         </div>
 
       </div>
 
-      <!--
-        URL은 아래 JS에서 한국 시간에 따라 자동 설정됨.
-        HTML에서 직접 href를 수정할 필요 없음.
-      -->
       <a
         id="bonusCouponButton"
         class="bonus-button"
@@ -773,687 +1033,852 @@ body {
         id="bonusCouponStatus"
         class="bonus-status"
       >
-       
+        한국 시간 기준으로 쿠폰 URL이 자동 전환됩니다.
       </p>
 
     </section>
-    <!-- /500원 보너스 쿠폰 -->
 
 
+    <!-- =====================================================
+         6개 게임 선택 영역
+         ===================================================== -->
+    <section class="select-section">
 
-  <!-- =====================================================
-       게임 1: 다크 데이티 2
-       ===================================================== -->
-  <section class="game-card">
+      <div class="select-heading">
 
-    <!-- 이미지 갤러리 -->
-    <div class="gallery" data-gallery>
+        <strong>
+          이번 주 할인 게임 6종
+        </strong>
 
-      <!-- 메인 이미지 -->
-      <div class="main-stage">
-        <img
-          class="main-image"
-          src="https://d2x8kymwjom7h7.cloudfront.net/live/application_no/119001/images/capsule_616x353_de.jpg"
-          alt="다크 데이티 2"
-        >
+        <span>
+          게임을 선택하면 해당 줄 바로 아래에 상세 카드가 펼쳐집니다.
+        </span>
 
-        <div class="pick-label">
-          01 · THIS WEEK'S PICK
+      </div>
+
+      <div
+        id="gameSelectGrid"
+        class="game-select-grid"
+      >
+        <!-- JS에서 6개 선택 카드를 생성 -->
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         선택 게임 상세
+         ===================================================== -->
+    <section id="detailShell" class="detail-shell">
+
+      <p class="detail-kicker">
+        SELECTED WEEKEND PICK
+      </p>
+
+      <div class="gallery">
+
+        <div class="main-stage">
+
+          <img
+            id="detailMainImage"
+            src=""
+            alt=""
+          >
+
+          <div
+            id="detailPickLabel"
+            class="pick-label"
+          >
+            01 · WEEKEND PICK
+          </div>
+
+          <div class="discount">
+
+            <small>
+              최종 할인율
+            </small>
+
+            <strong id="detailDiscount">
+              -
+            </strong>
+
+          </div>
+
         </div>
 
-        <div class="discount">
-          <small>최종 할인율</small>
-          <strong>49%</strong>
-        </div>
-      </div>
-
-      <!-- 썸네일 4개 -->
-      <div class="thumbs">
-        <!-- 썸네일 1 -->
-        <button
-          class="thumb active"
-          data-src="https://d2x8kymwjom7h7.cloudfront.net/live/application_no/119001/images/capsule_616x353_de.jpg"
-          type="button"
+        <div
+          id="detailThumbs"
+          class="thumbs"
         >
-          <img
-            src="https://d2x8kymwjom7h7.cloudfront.net/live/application_no/119001/images/capsule_616x353_de.jpg"
-            alt="다크 데이티 2 이미지 1"
-          >
-        </button>
-        <!-- 썸네일 2 -->
-        <button
-          class="thumb"
-          data-src="https://d2x8kymwjom7h7.cloudfront.net/live/application_no/10009/stove_app_image/다크데이티1.jpg"
-          type="button"
-        >
-          <img
-            src="https://d2x8kymwjom7h7.cloudfront.net/live/application_no/10009/stove_app_image/다크데이티1.jpg"
-            alt="다크 데이티 2 이미지 2"
-          >
-        </button>
-        <!-- 썸네일 3 -->
-        <button
-          class="thumb"
-          data-src="https://d2x8kymwjom7h7.cloudfront.net/live/application_no/10009/stove_app_image/다크데이티2.png"
-          type="button"
-        >
-          <img
-            src="https://d2x8kymwjom7h7.cloudfront.net/live/application_no/10009/stove_app_image/다크데이티2.png"
-            alt="다크 데이티 2 이미지 3"
-          >
-        </button>
-        <!-- 썸네일 4 -->
-        <button
-          class="thumb"
-          data-src="https://d2x8kymwjom7h7.cloudfront.net/live/application_no/10009/stove_app_image/다크데이티3.png"
-          type="button"
-        >
-          <img
-            src="https://d2x8kymwjom7h7.cloudfront.net/live/application_no/10009/stove_app_image/다크데이티3.png"
-            alt="다크 데이티 2 이미지 4"
-          >
-        </button>
-      </div>
-
-    </div>
-    <!-- /이미지 갤러리 -->
-
-
-    <!-- 게임 정보 -->
-    <div class="content">
-
-      <p class="eyebrow">
-        WEEKEND PICK 01
-      </p>
-
-      <h2 class="title">
-        다크 데이티 2
-      </h2>
-
-      <p class="summary">
-        부대를 편성하고 전장을 돌파하는 정통 턴제 전략 RPG.
-      </p>
-
-      <hr class="divider">
-
-
-      <!-- 가격 -->
-      <div class="price-row">
-        <span class="price-old">
-          27,000원
-        </span>
-
-        <span class="price-arrow">
-          →
-        </span>
-
-        <span class="price-final">
-          13,770<span class="won">원</span>
-        </span>
-      </div>
-
-      <p class="price-note">
-        40% 할인가 16,200원 · 15% 쿠폰 적용
-      </p>
-
-      <p class="period">
-        10.9 FRI — 10.11 SUN · 주말 한정
-      </p>
-
-
-      <!-- 버튼 영역 -->
-      <div class="actions">
-
-        <!-- 15% 할인 쿠폰 -->
-        <a
-          class="cta coupon"
-          href="https://bill.onstove.com/G-Coupon/DownloadCoupon.aspx?game_id=INDIEGAME&coupon_id=15571"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span class="coupon-icon">%</span>
-          15% 할인 쿠폰 받기
-        </a>
-
-        <!-- 게임 상세 페이지 -->
-        <a
-          class="cta game"
-          href="https://store.onstove.com/ko/games/3510"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          지금 게임 보러가기
-          <span class="arrow">→</span>
-        </a>
-
-      </div>
-      <!-- /버튼 영역 -->
-
-      <p class="note">
-        쿠폰 발급 후 결제 단계에서 적용할 수 있습니다.
-      </p>
-
-    </div>
-    <!-- /게임 정보 -->
-
-  </section>
-
-  <!-- 게임 구분선 -->
-  <div class="next">
-    NEXT WEEKEND DEAL ↓
-  </div>
-
-  <!-- =====================================================
-       게임 2: 포스탈 4: 후회는 없다
-       ===================================================== -->
-  <section class="game-card">
-
-    <!-- 이미지 갤러리 -->
-    <div class="gallery" data-gallery>
-
-      <!-- 메인 이미지 -->
-      <div class="main-stage">
-        <img
-          class="main-image"
-          src="https://d2x8kymwjom7h7.cloudfront.net/live/application_no/119001/application_no/119001/images/%ED%8F%AC%EC%8A%A4%ED%83%884%EC%8D%B8%EB%84%A4%EC%9D%BC.jpg"
-          alt="포스탈 4: 후회는 없다"
-        >
-
-        <div class="pick-label">
-          02 · WEEKEND SELECT
         </div>
 
-        <div class="discount">
-          <small>최종 할인율</small>
-          <strong>89%</strong>
-        </div>
       </div>
 
-      <!-- 썸네일 4개 -->
-      <div class="thumbs">
-        <!-- 썸네일 1 -->
-        <button
-          class="thumb active"
-          data-src="https://d2x8kymwjom7h7.cloudfront.net/live/application_no/119001/application_no/119001/images/%ED%8F%AC%EC%8A%A4%ED%83%884%EC%8D%B8%EB%84%A4%EC%9D%BC.jpg"
-          type="button"
+
+      <div class="detail-content">
+
+        <p
+          id="detailEyebrow"
+          class="detail-eyebrow"
         >
-          <img
-            src="https://d2x8kymwjom7h7.cloudfront.net/live/application_no/119001/application_no/119001/images/%ED%8F%AC%EC%8A%A4%ED%83%884%EC%8D%B8%EB%84%A4%EC%9D%BC.jpg"
-            alt="포스탈 4: 후회는 없다 이미지 1"
+          WEEKEND PICK 01
+        </p>
+
+        <h2
+          id="detailTitle"
+          class="detail-title"
+        >
+        </h2>
+
+        <p
+          id="detailSummary"
+          class="detail-summary"
+        >
+        </p>
+
+        <hr class="divider">
+
+
+        <div class="price-row">
+
+          <span
+            id="detailOriginalPrice"
+            class="price-old"
           >
-        </button>
-        <!-- 썸네일 2 -->
-        <button
-          class="thumb"
-          data-src="https://d2x8kymwjom7h7.cloudfront.net/live/application_no/119001/application_no/119001/images/1_1658472436065.jpg"
-          type="button"
-        >
-          <img
-            src="https://d2x8kymwjom7h7.cloudfront.net/live/application_no/119001/application_no/119001/images/1_1658472436065.jpg"
-            alt="포스탈 4: 후회는 없다 이미지 2"
+          </span>
+
+          <span class="price-arrow">
+            →
+          </span>
+
+          <span
+            id="detailFinalPrice"
+            class="price-final"
           >
-        </button>
-        <!-- 썸네일 3 -->
-        <button
-          class="thumb"
-          data-src="https://d2x8kymwjom7h7.cloudfront.net/live/application_no/119001/application_no/119001/images/3_1658472440271.jpg"
-          type="button"
-        >
-          <img
-            src="https://d2x8kymwjom7h7.cloudfront.net/live/application_no/119001/application_no/119001/images/3_1658472440271.jpg"
-            alt="포스탈 4: 후회는 없다 이미지 3"
-          >
-        </button>
-        <!-- 썸네일 4 -->
-        <button
-          class="thumb"
-          data-src="https://d2x8kymwjom7h7.cloudfront.net/live/application_no/119001/application_no/119001/images/5_1658472444689.jpg"
-          type="button"
-        >
-          <img
-            src="https://d2x8kymwjom7h7.cloudfront.net/live/application_no/119001/application_no/119001/images/5_1658472444689.jpg"
-            alt="포스탈 4: 후회는 없다 이미지 4"
-          >
-        </button>
-      </div>
+          </span>
 
-    </div>
-    <!-- /이미지 갤러리 -->
-
-
-    <!-- 게임 정보 -->
-    <div class="content">
-
-      <p class="eyebrow">
-        WEEKEND PICK 02
-      </p>
-
-      <h2 class="title">
-        포스탈 4: 후회는 없다
-      </h2>
-
-      <p class="summary">
-        기상천외한 유머와 자유도 높은 난장판 액션을 즐기는 오픈월드 FPS.
-      </p>
-
-      <hr class="divider">
-
-
-      <!-- 가격 -->
-      <div class="price-row">
-        <span class="price-old">
-          42,000원
-        </span>
-
-        <span class="price-arrow">
-          →
-        </span>
-
-        <span class="price-final">
-          4,640<span class="won">원</span>
-        </span>
-      </div>
-
-      <p class="price-note">
-        87% 할인가 5,460원 · 15% 쿠폰 적용
-      </p>
-
-      <p class="period">
-        10.9 FRI — 10.11 SUN · 주말 한정
-      </p>
-
-
-      <!-- 버튼 영역 -->
-      <div class="actions">
-
-        <!-- 15% 할인 쿠폰 -->
-        <a
-          class="cta coupon"
-          href="https://bill.onstove.com/G-Coupon/DownloadCoupon.aspx?game_id=INDIEGAME&coupon_id=15572"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span class="coupon-icon">%</span>
-          15% 할인 쿠폰 받기
-        </a>
-
-        <!-- 게임 상세 페이지 -->
-        <a
-          class="cta game"
-          href="https://store.onstove.com/ko/games/1076"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          지금 게임 보러가기
-          <span class="arrow">→</span>
-        </a>
-
-      </div>
-      <!-- /버튼 영역 -->
-
-      <p class="note">
-        쿠폰 발급 후 결제 단계에서 적용할 수 있습니다.
-      </p>
-
-    </div>
-    <!-- /게임 정보 -->
-
-  </section>
-
-  <!-- 게임 구분선 -->
-  <div class="next">
-    ONE MORE DEAL ↓
-  </div>
-
-  <!-- =====================================================
-       게임 3: 히파티아
-       ===================================================== -->
-  <section class="game-card">
-
-    <!-- 이미지 갤러리 -->
-    <div class="gallery" data-gallery>
-
-      <!-- 메인 이미지 -->
-      <div class="main-stage">
-        <img
-          class="main-image"
-          src="https://d2x8kymwjom7h7.cloudfront.net/live/member_no/219065094/application_no/119001/images/%EC%8B%9C%EB%86%89%EC%8B%9C%EC%8A%A41_1758428729201.png"
-          alt="히파티아"
-        >
-
-        <div class="pick-label">
-          03 · LAST WEEKEND PICK
         </div>
 
-        <div class="discount">
-          <small>최종 할인율</small>
-          <strong>44.8%</strong>
+        <p
+          id="detailPriceNote"
+          class="price-note"
+        >
+        </p>
+
+        <p class="period">
+          10.9 FRI — 10.11 SUN · 주말 한정
+        </p>
+
+
+        <div class="actions">
+
+          <a
+            id="detailCouponButton"
+            class="cta coupon"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="coupon-icon">%</span>
+            15% 할인 쿠폰 받기
+          </a>
+
+          <a
+            id="detailGameButton"
+            class="cta game-link"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            지금 게임 보러가기
+            <span class="arrow">→</span>
+          </a>
+
         </div>
-      </div>
 
-      <!-- 썸네일 4개 -->
-      <div class="thumbs">
-        <!-- 썸네일 1 -->
-        <button
-          class="thumb active"
-          data-src="https://d2x8kymwjom7h7.cloudfront.net/live/member_no/219065094/application_no/119001/images/%EC%8B%9C%EB%86%89%EC%8B%9C%EC%8A%A41_1758428729201.png"
-          type="button"
-        >
-          <img
-            src="https://d2x8kymwjom7h7.cloudfront.net/live/member_no/219065094/application_no/119001/images/%EC%8B%9C%EB%86%89%EC%8B%9C%EC%8A%A41_1758428729201.png"
-            alt="히파티아 이미지 1"
-          >
-        </button>
-        <!-- 썸네일 2 -->
-        <button
-          class="thumb"
-          data-src="https://d2x8kymwjom7h7.cloudfront.net/live/application_no/SGS0104044/images/%EB%B0%94%EB%8B%88%EA%B1%B83_%EC%9C%A0%EB%82%98_RGB_ts_1774266990697.png"
-          type="button"
-        >
-          <img
-            src="https://d2x8kymwjom7h7.cloudfront.net/live/application_no/SGS0104044/images/%EB%B0%94%EB%8B%88%EA%B1%B83_%EC%9C%A0%EB%82%98_RGB_ts_1774266990697.png"
-            alt="히파티아 이미지 2"
-          >
-        </button>
-        <!-- 썸네일 3 -->
-        <button
-          class="thumb"
-          data-src="https://d2x8kymwjom7h7.cloudfront.net/live/application_no/SGS0104044/images/Hypatia_Novel_URP_15_ko_ts_1784532137712.png"
-          type="button"
-        >
-          <img
-            src="https://d2x8kymwjom7h7.cloudfront.net/live/application_no/SGS0104044/images/Hypatia_Novel_URP_15_ko_ts_1784532137712.png"
-            alt="히파티아 이미지 3"
-          >
-        </button>
-        <!-- 썸네일 4 -->
-        <button
-          class="thumb"
-          data-src="https://d2x8kymwjom7h7.cloudfront.net/live/application_no/SGS0104044/images/%EB%B0%94%EB%8B%88%EA%B1%B82_%EC%8B%9C%EC%95%84_RGB_ts_1774266930213.png"
-          type="button"
-        >
-          <img
-            src="https://d2x8kymwjom7h7.cloudfront.net/live/application_no/SGS0104044/images/%EB%B0%94%EB%8B%88%EA%B1%B82_%EC%8B%9C%EC%95%84_RGB_ts_1774266930213.png"
-            alt="히파티아 이미지 4"
-          >
-        </button>
-      </div>
-
-    </div>
-    <!-- /이미지 갤러리 -->
-
-
-    <!-- 게임 정보 -->
-    <div class="content">
-
-      <p class="eyebrow">
-        WEEKEND PICK 03
-      </p>
-
-      <h2 class="title">
-        히파티아
-      </h2>
-
-      <p class="summary">
-        서사와 선택을 따라 인물들의 이야기를 풀어가는 감성 비주얼 노벨.
-      </p>
-
-      <hr class="divider">
-
-
-      <!-- 가격 -->
-      <div class="price-row">
-        <span class="price-old">
-          9,000원
-        </span>
-
-        <span class="price-arrow">
-          →
-        </span>
-
-        <span class="price-final">
-          4,970<span class="won">원</span>
-        </span>
-      </div>
-
-      <p class="price-note">
-        35% 할인가 5,850원 · 15% 쿠폰 적용
-      </p>
-
-      <p class="period">
-        10.9 FRI — 10.11 SUN · 주말 한정
-      </p>
-
-
-      <!-- 버튼 영역 -->
-      <div class="actions">
-
-        <!-- 15% 할인 쿠폰 -->
-        <a
-          class="cta coupon"
-          href="https://bill.onstove.com/G-Coupon/DownloadCoupon.aspx?game_id=INDIEGAME&coupon_id=15573"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span class="coupon-icon">%</span>
-          15% 할인 쿠폰 받기
-        </a>
-
-        <!-- 게임 상세 페이지 -->
-        <a
-          class="cta game"
-          href="https://store.onstove.com/ko/games/102741"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          지금 게임 보러가기
-          <span class="arrow">→</span>
-        </a>
+        <p class="note">
+          쿠폰 발급 후 결제 단계에서 적용할 수 있습니다.
+        </p>
 
       </div>
-      <!-- /버튼 영역 -->
 
-      <p class="note">
-        쿠폰 발급 후 결제 단계에서 적용할 수 있습니다.
-      </p>
-
-    </div>
-    <!-- /게임 정보 -->
-
-  </section>
-
+    </section>
 
   </main>
-  <!-- /페이지 전체 영역 -->
 
 
+  <script>
+    /* =========================================================
+       1. 게임 데이터
+       실제 6개 게임 데이터
+       ========================================================= */
+    const games = [{"title": "다크 데이티 2", "desc": "부대를 편성하고 전장을 돌파하는 정통 턴제 전략 RPG.", "original": "27,000원", "sale": "16,200원", "final": "13,770원", "sale_rate": "40%", "final_rate": "49%", "game_url": "https://store.onstove.com/ko/games/3510", "coupon_url": "https://bill.onstove.com/G-Coupon/DownloadCoupon.aspx?game_id=INDIEGAME&coupon_id=15571", "images": ["https://d2x8kymwjom7h7.cloudfront.net/live/application_no/119001/images/capsule_616x353_de.jpg", "https://d2x8kymwjom7h7.cloudfront.net/live/application_no/10009/stove_app_image/다크데이티1.jpg", "https://d2x8kymwjom7h7.cloudfront.net/live/application_no/10009/stove_app_image/다크데이티2.png", "https://d2x8kymwjom7h7.cloudfront.net/live/application_no/10009/stove_app_image/다크데이티3.png"], "demo_copy": false}, {"title": "포스탈 4: 후회는 없다", "desc": "기상천외한 유머와 자유도 높은 난장판 액션을 즐기는 오픈월드 FPS.", "original": "42,000원", "sale": "5,460원", "final": "4,640원", "sale_rate": "87%", "final_rate": "89%", "game_url": "https://store.onstove.com/ko/games/1076", "coupon_url": "https://bill.onstove.com/G-Coupon/DownloadCoupon.aspx?game_id=INDIEGAME&coupon_id=15572", "images": ["https://d2x8kymwjom7h7.cloudfront.net/live/application_no/119001/application_no/119001/images/%ED%8F%AC%EC%8A%A4%ED%83%884%EC%8D%B8%EB%84%A4%EC%9D%BC.jpg", "https://d2x8kymwjom7h7.cloudfront.net/live/application_no/119001/application_no/119001/images/1_1658472436065.jpg", "https://d2x8kymwjom7h7.cloudfront.net/live/application_no/119001/application_no/119001/images/3_1658472440271.jpg", "https://d2x8kymwjom7h7.cloudfront.net/live/application_no/119001/application_no/119001/images/5_1658472444689.jpg"], "demo_copy": false}, {"title": "히파티아", "desc": "서사와 선택을 따라 인물들의 이야기를 풀어가는 감성 비주얼 노벨.", "original": "9,000원", "sale": "5,850원", "final": "4,970원", "sale_rate": "35%", "final_rate": "44.8%", "game_url": "https://store.onstove.com/ko/games/102741", "coupon_url": "https://bill.onstove.com/G-Coupon/DownloadCoupon.aspx?game_id=INDIEGAME&coupon_id=15573", "images": ["https://d2x8kymwjom7h7.cloudfront.net/live/member_no/219065094/application_no/119001/images/%EC%8B%9C%EB%86%89%EC%8B%9C%EC%8A%A41_1758428729201.png", "https://d2x8kymwjom7h7.cloudfront.net/live/application_no/SGS0104044/images/%EB%B0%94%EB%8B%88%EA%B1%B83_%EC%9C%A0%EB%82%98_RGB_ts_1774266990697.png", "https://d2x8kymwjom7h7.cloudfront.net/live/application_no/SGS0104044/images/Hypatia_Novel_URP_15_ko_ts_1784532137712.png", "https://d2x8kymwjom7h7.cloudfront.net/live/application_no/SGS0104044/images/%EB%B0%94%EB%8B%88%EA%B1%B82_%EC%8B%9C%EC%95%84_RGB_ts_1774266930213.png"], "demo_copy": false}, {"title": "노른자 용사: 옛나~알 옛적에", "desc": "작고 귀여운 용사를 키우며 모험을 이어가는 방치형 육성 RPG.", "original": "4,500원", "sale": "2,160원", "final": "1,830원", "sale_rate": "52%", "final_rate": "59.3%", "game_url": "https://store.onstove.com/ko/games/4627", "coupon_url": "https://bill.onstove.com/G-Coupon/DownloadCoupon.aspx?game_id=INDIEGAME&coupon_id=15578", "images": ["https://d2x8kymwjom7h7.cloudfront.net/live/application_no/119001/images/Yolk%20Hero%20KV.png", "https://d2x8kymwjom7h7.cloudfront.net/live/member_no/197038523/application_no/119001/images/Yolk-Heroes-Screenshot-1.png", "https://d2x8kymwjom7h7.cloudfront.net/live/member_no/197038523/application_no/119001/images/Yolk-Heroes-Screenshot-2.png", "https://d2x8kymwjom7h7.cloudfront.net/live/member_no/197038523/application_no/119001/images/Yolk-Heroes-Screenshot-5.png"], "demo_copy": false}, {"title": "리:프레시", "desc": "숲과 일상을 오가며 감성을 채워가는 편안한 탐험 어드벤처.", "original": "5,600원", "sale": "1,120원", "final": "950원", "sale_rate": "80%", "final_rate": "83%", "game_url": "https://store.onstove.com/ko/games/104254", "coupon_url": "https://bill.onstove.com/G-Coupon/DownloadCoupon.aspx?game_id=INDIEGAME&coupon_id=15577", "images": ["https://d2x8kymwjom7h7.cloudfront.net/live/application_no/SGS0104044/images/ReFresh_Trailer_Thumbnail_ts_1776184070493.png", "https://d2x8kymwjom7h7.cloudfront.net/live/application_no/SGS0104044/images/ss_yuri_1920x1080_ts_1775773868531.jpg", "https://d2x8kymwjom7h7.cloudfront.net/live/application_no/SGS0104044/images/ss_woodsrun1920x1080_ts_1775773912687.jpg", "https://d2x8kymwjom7h7.cloudfront.net/live/application_no/SGS0104044/images/ss_todo_1920x1080_ts_1775774005128.jpg"], "demo_copy": false}, {"title": "젬포리움: 귀여운 채굴 시뮬레이션", "desc": "광산을 탐험하고 보석을 캐며 나만의 상점을 꾸려가는 아기자기한 채굴 시뮬레이션.", "original": "11,000원", "sale": "6,600원", "final": "5,610원", "sale_rate": "40%", "final_rate": "49%", "game_url": "https://store.onstove.com/ko/games/104127", "coupon_url": "https://bill.onstove.com/G-Coupon/DownloadCoupon.aspx?game_id=INDIEGAME&coupon_id=15576", "images": ["https://d2x8kymwjom7h7.cloudfront.net/live/application_no/SGS0104044/images/Gemporium_0806_LaunchTrailer_ts_1774377170335.png", "https://d2x8kymwjom7h7.cloudfront.net/live/application_no/SGS0104044/images/Screenshot_Hub_ts_1774377316420.jpg", "https://d2x8kymwjom7h7.cloudfront.net/live/application_no/SGS0104044/images/ss_ca45739b81928d0d172e86ed48aa86395afb53cf_ts_1774377387850.jpg", "https://d2x8kymwjom7h7.cloudfront.net/live/application_no/SGS0104044/images/2025-07-30_PrototypeShop_026_ts_1774377439225.png"], "demo_copy": false}];
 
-<script>
-/* =========================================================
-   1. 이미지 갤러리
-   - PC: 썸네일 마우스 오버
-   - 모바일: 썸네일 터치
-   ========================================================= */
-document.querySelectorAll("[data-gallery]").forEach((gallery) => {
-  const mainImage = gallery.querySelector(".main-image");
-  const thumbs = gallery.querySelectorAll(".thumb");
 
-  function selectThumb(button) {
-    thumbs.forEach((thumb) => {
-      thumb.classList.remove("active");
-    });
+    /* =========================================================
+       2. 6개 선택 카드 생성
+       ========================================================= */
+    const gameSelectGrid =
+      document.getElementById(
+        "gameSelectGrid"
+      );
 
-    button.classList.add("active");
+    games.forEach(
+      (game, index) => {
 
-    const nextImage = button.dataset.src;
+        const button =
+          document.createElement(
+            "button"
+          );
 
-    if (mainImage.getAttribute("src") !== nextImage) {
-      mainImage.style.opacity = "0.35";
+        button.type =
+          "button";
 
-      setTimeout(() => {
-        mainImage.src = nextImage;
-        mainImage.style.opacity = "1";
-      }, 110);
-    }
-  }
+        button.className =
+          "select-card" +
+          (index === 0
+            ? " active"
+            : "");
 
-  thumbs.forEach((button) => {
-    button.addEventListener("mouseenter", () => {
-      if (window.matchMedia("(hover:hover)").matches) {
-        selectThumb(button);
+        button.dataset.index =
+          index;
+
+        const demoLabel =
+          game.demo_copy
+            ? `
+              <div class="select-demo">
+                
+              </div>
+            `
+            : "";
+
+        button.innerHTML = `
+          <div class="select-image">
+
+            <img
+              src="${game.images[0]}"
+              alt="${game.title}"
+            >
+
+            <span class="select-number">
+              ${String(index + 1).padStart(2, "0")}
+            </span>
+
+            <span class="select-discount">
+              ${game.final_rate} OFF
+            </span>
+
+          </div>
+
+          <div class="select-info">
+
+            <span class="select-title">
+              ${game.title}
+            </span>
+
+            <div class="select-price">
+
+              <span class="select-price-old">
+                ${game.original}
+              </span>
+
+              <span class="select-price-final">
+                ${game.final}
+              </span>
+
+            </div>
+
+            ${demoLabel}
+
+          </div>
+        `;
+
+        button.addEventListener(
+          "click",
+          () => {
+            selectGame(index);
+          }
+        );
+
+        gameSelectGrid.appendChild(
+          button
+        );
       }
-    });
-
-    button.addEventListener("click", () => {
-      selectThumb(button);
-    });
-  });
-});
+    );
 
 
-/* =========================================================
-   2. 500원 보너스 쿠폰 URL 자동 전환
+    /* =========================================================
+       3. 선택 상세 카드 위치 계산
 
-   기준 시간대: Asia/Seoul (한국 시간)
+       모바일
+       - 2열 x 3행
+       - 1/2 선택 → 3/4 바로 위에 상세
+       - 3/4 선택 → 5/6 바로 위에 상세
+       - 5/6 선택 → 마지막 줄 아래에 상세
 
-   A 쿠폰
-   ~ 2026-10-09 23:59:59
-   https://bill.onstove.com/G-Coupon/DownloadCoupon.aspx?game_id=INDIEGAME&coupon_id=15407
-
-   B 쿠폰
-   2026-10-10 00:00:00 ~ 2026-10-11 23:59:59
-   https://bill.onstove.com/G-Coupon/DownloadCoupon.aspx?game_id=INDIEGAME&coupon_id=15574
-
-   10월 12일 00:00 이후에는 버튼 자동 비활성화
-   ========================================================= */
-const BONUS_COUPON_URL_1 =
-  "https://bill.onstove.com/G-Coupon/DownloadCoupon.aspx?game_id=INDIEGAME&coupon_id=15407";
-
-const BONUS_COUPON_URL_2 =
-  "https://bill.onstove.com/G-Coupon/DownloadCoupon.aspx?game_id=INDIEGAME&coupon_id=15574";
+       PC
+       - 3열 x 2행
+       - 1/2/3 선택 → 4/5/6 바로 위에 상세
+       - 4/5/6 선택 → 마지막 줄 아래에 상세
+       ========================================================= */
+    let selectedGameIndex = 0;
 
 
-function getKoreaTimeNumber() {
-  const parts = new Intl.DateTimeFormat(
-    "en-US",
-    {
-      timeZone: "Asia/Seoul",
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-      hour12: false,
+    function getCardsPerRow() {
+
+      /*
+        CSS와 동일한 기준:
+        760px 이하 = 모바일 2열
+        761px 이상 = PC 3열
+      */
+      return window.innerWidth <= 760
+        ? 2
+        : 3;
     }
-  ).formatToParts(new Date());
 
-  const value = {};
 
-  parts.forEach((part) => {
-    if (part.type !== "literal") {
-      value[part.type] = part.value;
+    function moveDetailBelowSelectedRow(index) {
+
+      const detailShell =
+        document.getElementById(
+          "detailShell"
+        );
+
+      const cards =
+        Array.from(
+          document.querySelectorAll(
+            ".select-card"
+          )
+        );
+
+      if (
+        !detailShell ||
+        cards.length === 0
+      ) {
+        return;
+      }
+
+      const cardsPerRow =
+        getCardsPerRow();
+
+      /*
+        선택한 카드가 속한 행의 마지막 카드 번호 계산
+
+        예)
+        모바일 2열:
+        index 0/1 → rowEnd 1
+        index 2/3 → rowEnd 3
+        index 4/5 → rowEnd 5
+
+        PC 3열:
+        index 0/1/2 → rowEnd 2
+        index 3/4/5 → rowEnd 5
+      */
+      const rowEndIndex =
+        Math.min(
+          Math.ceil(
+            (index + 1) /
+            cardsPerRow
+          ) *
+          cardsPerRow -
+          1,
+          cards.length - 1
+        );
+
+      const rowEndCard =
+        cards[rowEndIndex];
+
+      /*
+        상세 카드를 선택한 행의 마지막 카드
+        바로 다음 DOM 위치로 이동합니다.
+      */
+      rowEndCard.insertAdjacentElement(
+        "afterend",
+        detailShell
+      );
     }
-  });
-
-  return Number(
-    value.year +
-    value.month +
-    value.day +
-    value.hour +
-    value.minute +
-    value.second
-  );
-}
 
 
-function updateBonusCoupon() {
-  const button = document.getElementById("bonusCouponButton");
-  const status = document.getElementById("bonusCouponStatus");
+    /* =========================================================
+       4. 선택 게임 상세 변경
+       ========================================================= */
+    function selectGame(index) {
 
-  if (!button || !status) {
-    return;
-  }
+      selectedGameIndex =
+        index;
 
-  const koreaNow = getKoreaTimeNumber();
+      const game =
+        games[index];
 
-  const FIRST_END = 20261009235959;
-  const SECOND_START = 20261010000000;
-  const SECOND_END = 20261011235959;
+      document
+        .querySelectorAll(
+          ".select-card"
+        )
+        .forEach(
+          (card) => {
+            card.classList.remove(
+              "active"
+            );
+          }
+        );
 
-  /*
-    1차 URL:
-    한국 시간 10/9 23:59:59까지
-  */
-  if (koreaNow <= FIRST_END) {
-    button.href = BONUS_COUPON_URL_1;
-    button.classList.remove("is-disabled");
-    button.setAttribute("aria-disabled", "false");
+      const activeCard =
+        document.querySelector(
+          `.select-card[data-index="${index}"]`
+        );
 
-    status.textContent = "";
-
-    return;
-  }
-
-  /*
-    2차 URL:
-    한국 시간 10/10 00:00 ~ 10/11 23:59:59
-  */
-  if (
-    koreaNow >= SECOND_START &&
-    koreaNow <= SECOND_END
-  ) {
-    button.href = BONUS_COUPON_URL_2;
-    button.classList.remove("is-disabled");
-    button.setAttribute("aria-disabled", "false");
-
-    status.textContent = "";
-
-    return;
-  }
-
-  /*
-    이벤트 종료 후
-  */
-  button.removeAttribute("href");
-  button.classList.add("is-disabled");
-  button.setAttribute("aria-disabled", "true");
-
-  status.textContent =
-    document.documentElement.lang === "ko"
-      ? "500원 보너스 쿠폰 다운로드 기간이 종료되었습니다."
-      : "The ₩500 bonus coupon download period has ended.";
-}
+      if (activeCard) {
+        activeCard.classList.add(
+          "active"
+        );
+      }
 
 
-/* 페이지 진입 시 즉시 확인 */
-updateBonusCoupon();
+      /*
+        선택한 카드가 있는 행의
+        바로 아래로 상세 영역 이동
+      */
+      moveDetailBelowSelectedRow(
+        index
+      );
 
-/* 자정에 페이지를 열어둔 경우에도 자동 전환되도록 30초마다 갱신 */
-setInterval(updateBonusCoupon, 30000);
+      /*
+        다른 줄을 선택했을 때
+        상세 카드가 자연스럽게 다시 펼쳐지는 효과
+      */
+      const detailShell =
+        document.getElementById(
+          "detailShell"
+        );
+
+      detailShell.style.animation =
+        "none";
+
+      detailShell.offsetHeight;
+
+      detailShell.style.animation =
+        "detailOpen 0.22s ease";
 
 
-/* =========================================================
-   3. iframe 높이 전달
-   부모 페이지가 postMessage를 받을 수 있을 경우 사용
-   ========================================================= */
-function postHeight() {
-  window.parent.postMessage(
-    {
-      type: "weekendDealHeight",
-      height: document.documentElement.scrollHeight,
-    },
-    "*"
-  );
-}
+      /*
+        상세 텍스트
+      */
+      document.getElementById(
+        "detailPickLabel"
+      ).textContent =
+        `${String(index + 1).padStart(2, "0")} · WEEKEND PICK`;
 
-window.addEventListener("load", postHeight);
-window.addEventListener("resize", postHeight);
+      document.getElementById(
+        "detailEyebrow"
+      ).textContent =
+        `WEEKEND PICK ${String(index + 1).padStart(2, "0")}`;
 
-setTimeout(postHeight, 400);
-setTimeout(postHeight, 1200);
-</script>
+      document.getElementById(
+        "detailTitle"
+      ).textContent =
+        game.title;
 
+      document.getElementById(
+        "detailSummary"
+      ).textContent =
+        game.desc;
+
+      document.getElementById(
+        "detailDiscount"
+      ).textContent =
+        game.final_rate;
+
+
+      /*
+        가격
+      */
+      document.getElementById(
+        "detailOriginalPrice"
+      ).textContent =
+        game.original;
+
+      document.getElementById(
+        "detailFinalPrice"
+      ).textContent =
+        game.final;
+
+      document.getElementById(
+        "detailPriceNote"
+      ).textContent =
+        `${game.sale_rate} 할인가 ${game.sale} · 15% 쿠폰 적용`;
+
+
+      /*
+        버튼 URL
+      */
+      document.getElementById(
+        "detailCouponButton"
+      ).href =
+        game.coupon_url;
+
+      document.getElementById(
+        "detailGameButton"
+      ).href =
+        game.game_url;
+
+
+      /*
+        대표 이미지
+      */
+      const mainImage =
+        document.getElementById(
+          "detailMainImage"
+        );
+
+      mainImage.src =
+        game.images[0];
+
+      mainImage.alt =
+        game.title;
+
+
+      /*
+        썸네일 4개 다시 생성
+      */
+      renderDetailThumbs(
+        game
+      );
+
+      postHeight();
+    }
+
+
+    /* =========================================================
+       5. 상세 썸네일
+       ========================================================= */
+    function renderDetailThumbs(game) {
+
+      const wrap =
+        document.getElementById(
+          "detailThumbs"
+        );
+
+      const mainImage =
+        document.getElementById(
+          "detailMainImage"
+        );
+
+      wrap.innerHTML =
+        "";
+
+      game.images.forEach(
+        (imageUrl, imageIndex) => {
+
+          const thumb =
+            document.createElement(
+              "button"
+            );
+
+          thumb.type =
+            "button";
+
+          thumb.className =
+            "thumb" +
+            (imageIndex === 0
+              ? " active"
+              : "");
+
+          thumb.innerHTML = `
+            <img
+              src="${imageUrl}"
+              alt=""
+            >
+          `;
+
+
+          function changeImage() {
+
+            wrap
+              .querySelectorAll(
+                ".thumb"
+              )
+              .forEach(
+                (item) => {
+                  item.classList.remove(
+                    "active"
+                  );
+                }
+              );
+
+            thumb.classList.add(
+              "active"
+            );
+
+            if (
+              mainImage.src !==
+              imageUrl
+            ) {
+
+              mainImage.style.opacity =
+                "0.35";
+
+              setTimeout(
+                () => {
+                  mainImage.src =
+                    imageUrl;
+
+                  mainImage.style.opacity =
+                    "1";
+                },
+                110
+              );
+            }
+          }
+
+
+          /*
+            PC: 마우스 오버
+          */
+          thumb.addEventListener(
+            "mouseenter",
+            () => {
+
+              if (
+                window.matchMedia(
+                  "(hover:hover)"
+                ).matches
+              ) {
+                changeImage();
+              }
+            }
+          );
+
+
+          /*
+            모바일: 터치 / 클릭
+          */
+          thumb.addEventListener(
+            "click",
+            changeImage
+          );
+
+          wrap.appendChild(
+            thumb
+          );
+        }
+      );
+    }
+
+
+    /* =========================================================
+       6. 500원 쿠폰 자동 URL 전환
+       ========================================================= */
+    const BONUS_COUPON_URL_1 =
+      "https://bill.onstove.com/G-Coupon/DownloadCoupon.aspx?game_id=INDIEGAME&coupon_id=15407";
+
+    const BONUS_COUPON_URL_2 =
+      "https://bill.onstove.com/G-Coupon/DownloadCoupon.aspx?game_id=INDIEGAME&coupon_id=15574";
+
+
+    function getKoreaTimeNumber() {
+
+      const parts =
+        new Intl.DateTimeFormat(
+          "en-US",
+          {
+            timeZone:
+              "Asia/Seoul",
+
+            year:
+              "numeric",
+
+            month:
+              "2-digit",
+
+            day:
+              "2-digit",
+
+            hour:
+              "2-digit",
+
+            minute:
+              "2-digit",
+
+            second:
+              "2-digit",
+
+            hour12:
+              false
+          }
+        ).formatToParts(
+          new Date()
+        );
+
+      const value = {};
+
+      parts.forEach(
+        (part) => {
+
+          if (
+            part.type !==
+            "literal"
+          ) {
+            value[
+              part.type
+            ] =
+              part.value;
+          }
+        }
+      );
+
+      return Number(
+        value.year +
+        value.month +
+        value.day +
+        value.hour +
+        value.minute +
+        value.second
+      );
+    }
+
+
+    function updateBonusCoupon() {
+
+      const button =
+        document.getElementById(
+          "bonusCouponButton"
+        );
+
+      const status =
+        document.getElementById(
+          "bonusCouponStatus"
+        );
+
+      const now =
+        getKoreaTimeNumber();
+
+      const FIRST_END =
+        20261009235959;
+
+      const SECOND_START =
+        20261010000000;
+
+      const SECOND_END =
+        20261011235959;
+
+
+      if (
+        now <=
+        FIRST_END
+      ) {
+
+        button.href =
+          BONUS_COUPON_URL_1;
+
+        button.classList.remove(
+          "is-disabled"
+        );
+
+        status.textContent =
+          "현재 10월 9일까지 사용 가능한 보너스 쿠폰입니다.";
+
+        return;
+      }
+
+
+      if (
+        now >=
+          SECOND_START &&
+        now <=
+          SECOND_END
+      ) {
+
+        button.href =
+          BONUS_COUPON_URL_2;
+
+        button.classList.remove(
+          "is-disabled"
+        );
+
+        status.textContent =
+          "현재 10월 10일~11일용 보너스 쿠폰으로 자동 전환되었습니다.";
+
+        return;
+      }
+
+
+      button.removeAttribute(
+        "href"
+      );
+
+      button.classList.add(
+        "is-disabled"
+      );
+
+      status.textContent =
+        "500원 보너스 쿠폰 다운로드 기간이 종료되었습니다.";
+    }
+
+
+    /* =========================================================
+       7. iframe 높이 전달
+       ========================================================= */
+    function postHeight() {
+
+      window.parent.postMessage(
+        {
+          type:
+            "weekendDealHeight",
+
+          height:
+            document
+              .documentElement
+              .scrollHeight
+        },
+        "*"
+      );
+    }
+
+
+    /* =========================================================
+       8. 초기 실행
+       ========================================================= */
+    selectGame(0);
+
+    updateBonusCoupon();
+
+    setInterval(
+      updateBonusCoupon,
+      30000
+    );
+
+    window.addEventListener(
+      "load",
+      postHeight
+    );
+
+    window.addEventListener(
+      "resize",
+      () => {
+
+        /*
+          화면 폭이 바뀌면
+          2열 ↔ 3열 구조가 달라지므로
+          상세 카드 위치도 다시 계산
+        */
+        moveDetailBelowSelectedRow(
+          selectedGameIndex
+        );
+
+        postHeight();
+      }
+    );
+
+    setTimeout(
+      postHeight,
+      400
+    );
+
+    setTimeout(
+      postHeight,
+      1200
+    );
+  </script>
 
 </body>
 </html>
